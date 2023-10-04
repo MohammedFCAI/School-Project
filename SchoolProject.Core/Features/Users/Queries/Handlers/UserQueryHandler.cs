@@ -33,7 +33,7 @@ namespace SchoolProject.Core.Features.Users.Queries.Handlers
 
 		public async Task<Response<GetUsersResponse>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
 		{
-			var user = await _userManger.Users.FirstOrDefaultAsync(x => x.Id == request.Id);
+			var user = await _userManger.Users.FirstOrDefaultAsync(x => x.Id == request.Id.ToString());
 
 			if (user == null)
 				return NotFound<GetUsersResponse>("User id is not found 🙁🙁..");

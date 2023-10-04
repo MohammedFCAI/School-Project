@@ -1,7 +1,10 @@
-﻿namespace SchoolProject.API.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace SchoolProject.API.Controllers
 {
 	[Route("api/students")]
 	[ApiController]
+	[Authorize]
 	public class StudentsController : AppControllerBase
 	{
 		private readonly IMediator _mediator;
@@ -19,18 +22,18 @@
 		}
 
 		[HttpGet("{id}")]
+		[AllowAnonymous]
 		public async Task<IActionResult> GetStudentById(int id)
 		{
-			//var request = await _mediator.Send(new GetStudentByIdQuery(id));
-			var request = await Mediator.Send(new GetStudentByIdQuery(id));
+			var request = await _mediator.Send(new GetStudentByIdQuery(id));
 			return NewResult(request);
 		}
 
 		[HttpPost]
+
 		public async Task<IActionResult> AddStudent([FromBody] AddStudentCommand student)
 		{
-			// var request = await _mediator.Send(student);
-			var request = await Mediator.Send(student);
+			var request = await _mediator.Send(student);
 			return NewResult(request);
 		}
 
@@ -43,6 +46,7 @@
 		}
 
 		[HttpDelete("{id}")]
+
 		public async Task<IActionResult> DeleteStudent(int id)
 		{
 			var request = await _mediator.Send(new DeleteStudentCommand(id));
