@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Features\DepartmentCourses\Commands\Responses\**" />
+    <Compile Remove="Features\Departments\Commands\Validators\**" />
+    <Compile Remove="Features\StudentCourse\Commands\Reponses\**" />
+    <Compile Remove="Features\Students\Commands\Validators\**" />
+    <Compile Remove="Features\Subjects\SharedModels\**" />
+    <Compile Remove="Features\User\**" />
+    <EmbeddedResource Remove="Features\DepartmentCourses\Commands\Responses\**" />
+    <EmbeddedResource Remove="Features\Departments\Commands\Validators\**" />
+    <EmbeddedResource Remove="Features\StudentCourse\Commands\Reponses\**" />
+    <EmbeddedResource Remove="Features\Students\Commands\Validators\**" />
+    <EmbeddedResource Remove="Features\Subjects\SharedModels\**" />
+    <EmbeddedResource Remove="Features\User\**" />
+    <None Remove="Features\DepartmentCourses\Commands\Responses\**" />
+    <None Remove="Features\Departments\Commands\Validators\**" />
+    <None Remove="Features\StudentCourse\Commands\Reponses\**" />
+    <None Remove="Features\Students\Commands\Validators\**" />
+    <None Remove="Features\Subjects\SharedModels\**" />
+    <None Remove="Features\User\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolProject.Data\SchoolProject.Data.csproj" />
+    <ProjectReference Include="..\SchoolProject.Infrastructure\SchoolProject.Infrastructure.csproj" />
+    <ProjectReference Include="..\SchoolProject.Service\SchoolProject.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.7.1" />
+    <PackageReference Include="MediatR" Version="12.1.1" />
+  </ItemGroup>
+
+</Project>

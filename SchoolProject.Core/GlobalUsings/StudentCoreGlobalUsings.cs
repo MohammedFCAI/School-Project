@@ -1,0 +1,16 @@
+﻿global using AutoMapper;
+global using MediatR;
+global using Microsoft.Extensions.DependencyInjection;
+global using SchoolProject.Core.Bases;
+global using SchoolProject.Core.Features.Departments.Commands.Models;
+global using SchoolProject.Core.Features.Departments.Commands.Responses;
+global using SchoolProject.Core.Features.Departments.Queries.Responses;
+global using SchoolProject.Core.Features.Departments.SharedModels;
+global using SchoolProject.Core.Features.Students.Commands.Models;
+global using SchoolProject.Core.Features.Students.Commands.Responses;
+global using SchoolProject.Core.Features.Students.Queries.Models;
+global using SchoolProject.Core.Features.Students.Queries.Responses;
+global using SchoolProject.Core.Features.Students.SharedModels;
+global using SchoolProject.Data.Entities;
+global using SchoolProject.Service.Interfaces;
+global using System.Reflection;
