@@ -1,4 +1,6 @@
-﻿using SchoolProject.Infrastructure.Repositories;
+﻿using SchoolProject.Data.Helpers;
+using SchoolProject.Infrastructure.Repositories;
+using System.Collections.Concurrent;
 
 namespace SchoolProject.Service
 {
@@ -13,6 +15,10 @@ namespace SchoolProject.Service
 			services.AddTransient<IStudentSubjectsService, StudentSubjectService>();
 			services.AddTransient<IDepartmentSubjectsService, DepartmentSubjectsService>();
 			services.AddTransient<IAuthenticationService, AuthenticationService>();
+			services.AddTransient<ConcurrentDictionary<string, RefreshToken>>();
+			services.AddScoped<UnitOfWork>();
+
+
 
 			return services;
 		}

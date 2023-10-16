@@ -19,6 +19,11 @@ namespace SchoolProject.Infrastructure
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(connectionString));
 
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+				options.AddPolicy("UserPolicy", policy => policy.RequireRole("User"));
+			});
 
 			//JWT Authentication
 			// Map

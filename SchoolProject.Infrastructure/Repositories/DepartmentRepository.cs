@@ -30,9 +30,6 @@ namespace SchoolProject.Infrastructure.Repositories
 			.ThenInclude(ds => ds.Subject)
 			.FirstOrDefaultAsync();
 
-			//var students = await _context.Departments.Where(d => d.DepartmentId == departmentId)
-			//	.Include(d => d.Students).FirstOrDefaultAsync();
-
 			var studentsInDepartment = _studentRepository.GetStudentsByDepartmentId(departmentId);
 
 			var subjectsInDepartment = department.DepartmentSubjects

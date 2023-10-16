@@ -9,6 +9,7 @@
 			services.AddTransient<ISubjectRepository, SubjectRepository>();
 			services.AddTransient<IStudentSubjectsRepository, StudentSubjectsRepository>();
 			services.AddTransient<IDepartmentSubjectsRepository, DepartmentSubjectsRepository>();
+			services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
 
 			return services;
 		}

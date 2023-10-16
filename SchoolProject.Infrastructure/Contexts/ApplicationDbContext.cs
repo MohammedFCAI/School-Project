@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using SchoolProject.Data.Entities.Identities;
+using System.Reflection;
 
 namespace SchoolProject.Infrastructure.Context
 {
@@ -18,10 +19,15 @@ namespace SchoolProject.Infrastructure.Context
 		{
 			base.OnModelCreating(modelBuilder);
 
+			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+
 			modelBuilder.Entity<IdentityUserLogin<string>>(b =>
 			{
 				b.HasKey(l => new { l.LoginProvider, l.ProviderKey });
 			});
+
+
 
 			modelBuilder.Entity<StudentSubject>()
 				.HasKey(t => new { t.StudentId, t.SubjectId });
@@ -58,5 +64,6 @@ namespace SchoolProject.Infrastructure.Context
 		public DbSet<StudentSubject> StudentSubjects { get; set; }
 		public DbSet<DepartmentSubject> DepartmentSubjects { get; set; }
 		public DbSet<User> Users { get; set; }
+		public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
 	}
 }

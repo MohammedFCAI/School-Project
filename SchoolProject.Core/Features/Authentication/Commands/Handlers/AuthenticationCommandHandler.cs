@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SchoolProject.Core.Features.Authentication.Commands.Models;
 using SchoolProject.Data.Entities.Identities;
+using SchoolProject.Data.Helpers;
 
 namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 {
-	public class AuthenticationCommandHandler : ResponseHandler, IRequestHandler<SignInCommand, Response<string>>
+	public class AuthenticationCommandHandler : ResponseHandler, IRequestHandler<SignInCommand, Response<SignInResponse>>
 	{
 		private readonly IMapper _mapper;
 		private readonly UserManager<User> _userManager;
@@ -19,7 +20,7 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 			_signInManager = signInManager;
 		}
 
-		public async Task<Response<string>> Handle(SignInCommand request, CancellationToken cancellationToken)
+		public async Task<Response<SignInResponse>> Handle(SignInCommand request, CancellationToken cancellationToken)
 		{
 
 			var user = await _userManager.FindByNameAsync(request.UserName);
@@ -27,7 +28,7 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 			var userPass = _userManager.CheckPasswordAsync(user, request.Password);
 
 			if (user is null || userPass.Result is false)
-				return NotFound<string>("Error in username or password 😶😶..");
+				return NotFound<SignInResponse>("Error in username or password 😶😶..");
 
 			// Generate Token..
 			var result = await _authenticationService.GetJWTToken(user);

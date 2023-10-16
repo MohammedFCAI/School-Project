@@ -7,5 +7,6 @@
 		ISubjectRepository SubjectRepository { get; }
 		IStudentSubjectsRepository StudentSubjectsRepository { get; }
 		IDepartmentSubjectsRepository DepartmentSubjectsRepository { get; }
+		IRefreshTokenRepository RefreshTokenRepository { get; }
 	}
 }
